@@ -19,9 +19,6 @@ public class Factura {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 	
-	@Column(name="fac_numero")
-	private String numeroFactura;
-	
 	@Column(name="fac_fecha")
 	private Date fechaFactura;
 	
@@ -48,13 +45,6 @@ public class Factura {
 		this.codigo = codigo;
 	}
 
-	public String getNumeroFactura() {
-		return numeroFactura;
-	}
-
-	public void setNumeroFactura(String numeroFactura) {
-		this.numeroFactura = numeroFactura;
-	}
 
 	public Date getFechaFactura() {
 		return fechaFactura;
@@ -99,7 +89,7 @@ public class Factura {
 
 	@Override
 	public String toString() {
-		return "Factura [codigo=" + codigo + ", numeroFactura=" + numeroFactura + ", fechaFactura=" + fechaFactura + ", total=" + total +
+		return "Factura [codigo=" + codigo + ", numeroFactura=" + ", fechaFactura=" + fechaFactura + ", total=" + total +
 				", cliente=" + cliente + ", cliente2=" + ", ticket=" + ticket + ", tarifa=" + tarifa + "]";
 	}
 }

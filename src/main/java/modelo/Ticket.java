@@ -1,5 +1,5 @@
 package modelo;
-import java.util.Date;
+import java.time.LocalTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,19 +16,19 @@ public class Ticket {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 	
-	@Column(name="tick_horaE")
-	private Date horaEntrada ;
+
+	private LocalTime horaEntrada ;
 	
-	@Column(name="tick_horaS")
-	private Date horaSalida ;
+
+	private LocalTime horaSalida ;
 	
 	@OneToOne
 	@JoinColumn(name="cli_codigo")
 	private Cliente cliente;
 
 	@OneToOne
-	@JoinColumn(name="sit_codigo")
-	private Sitio sitio;
+	@JoinColumn(name="vehi_codigo")
+	private Vehiculo vehiculo;
 	
 	public int getCodigo() {
 		return codigo;
@@ -38,19 +38,19 @@ public class Ticket {
 		this.codigo = codigo;
 	}
 
-	public Date getHoraEntrada() {
+	public LocalTime getHoraEntrada() {
 		return horaEntrada;
 	}
 
-	public void setHoraEntrada(Date horaEntrada) {
+	public void setHoraEntrada(LocalTime horaEntrada) {
 		this.horaEntrada = horaEntrada;
 	}
 
-	public Date getHoraSalida() {
+	public LocalTime getHoraSalida() {
 		return horaSalida;
 	}
 
-	public void setHoraSalida(Date horaSalida) {
+	public void setHoraSalida(LocalTime horaSalida) {
 		this.horaSalida = horaSalida;
 	}
 
@@ -62,17 +62,17 @@ public class Ticket {
 		this.cliente = cliente;
 	}
 
-	public Sitio getSitio() {
-		return sitio;
+	public Vehiculo getVehiculo() {
+		return vehiculo;
 	}
 
-	public void setSitio(Sitio sitio) {
-		this.sitio = sitio;
+	public void setVehiculo(Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
 	}
 
 	@Override
 	public String toString() {
 		return "Vehiculo [codigo=" + codigo + ", horaEntrada=" + horaEntrada + ", horaSalida=" + horaSalida 
-				+ ", cliente=" + cliente + ", vehiculo=" + "]";
+				+ ", cliente=" + cliente + ", vehiculo=" + vehiculo + "]";
 	}	
 }

@@ -8,6 +8,7 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import modelo.Ticket;
 import modelo.Vehiculo;
 
@@ -44,6 +45,19 @@ public class TicketDAO implements Serializable{
 		Query q = em.createQuery(jpql);
 		return q.getResultList();
 	}
+	
+	public Ticket getByCodigo(int codigo) {
+        String jpql = "SELECT p FROM Ticket p WHERE p.codigo = :codigo";
+        TypedQuery<Ticket> query = em.createQuery(jpql, Ticket.class);
+        query.setParameter("codigo", codigo);
+
+        List<Ticket> results = query.getResultList();
+        if (results.isEmpty()) {
+            return null; // Devolver null cuando no se encuentra ninguna persona
+        } else {
+            return results.get(0); // Devolver la primera persona encontrada
+        }
+    }
 	
 	
 	public double CalcularTotal(Ticket t) {
